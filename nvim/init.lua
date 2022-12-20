@@ -46,13 +46,13 @@ require("packer").startup(function(use)
   -- Optional
   use("nvim-lua/popup.nvim")
   use("nvim-lua/plenary.nvim")
-  use("nvim-telescope/telescope.nvim")
+  -- use("nvim-telescope/telescope.nvim")
   use({ 'junegunn/fzf', run = './install --bin'})
   use('junegunn/fzf.vim')
-  use('junegunn/seoul256.vim')
 
   -- Some color scheme other then default
-  use("arcticicestudio/nord-vim")
+  -- use("arcticicestudio/nord-vim")
+  use('junegunn/seoul256.vim')
 end)
 
 -- the first run will install packer and our plugins
@@ -71,6 +71,16 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess = vim.opt.shortmess + "c"
 vim.opt.guicursor = ""
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+vim.g.seoul256_background = 324
+vim.api.nvim_command [[colorscheme seoul256]]
+
+-- Remove background from colorschemes so it is transparent
+vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+
+vim.env.FZF_DEFAULT_COMMAND = 'rg --files --glob "!.git/*"'
 
 local function on_attach(client, buffer)
   -- This callback is called when the LSP is atttached/enabled for this buffer
@@ -157,7 +167,7 @@ cmp.setup({
 -- vim.keymap.set('n', '<S-Left>', '<C-w>2-')
 -- vim.keymap.set('n', '<S-Right>', '<C-w>2+')
 -- vim.keymap.set('n', '<S-Up>', '<C-w>2>')
-vim.keymap.set('n', '<C-p>', '<cmd>FZF<CR>')
+vim.keymap.set('n', '<C-p>', '<cmd>Files<CR>')
 -- vim.keymap.set('n', '<leader>cc', '"+yy')
 -- vim.keymap.set('n', '<leader>e', trim_whitespaces)
 -- vim.keymap.set('n', '<leader>t', '<cmd>terminal<CR>')
