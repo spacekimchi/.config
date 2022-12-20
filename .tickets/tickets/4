@@ -1,0 +1,10 @@
+ticket:4
+responsible:jin
+status:closed
+================
+Add a .ticket file in project root. The purpose is:
+1. so tickets can only be run in directories with .ticket
+2. running tickets in a directory without a .ticket file will ask if youd like to create one
+3. contents of .ticket file will just be {project_name} coresponding to /home/ssg/.tickets/{project_name}
+   where tickets for that project is stored
+

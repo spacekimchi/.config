@@ -1,0 +1,10 @@
+ticket:0
+status:open
+================
+This will be a static web page of recipes you can make and with what ingredients.
+The goal is to make it static with, if possible, no javascipt.
+Maybe javascript will be used for searching.
+MVP:
+1) Users should be able to add ingredients into their pantry
+2) Users should be able to see what recipes they can make based on what is in their pantry
+

@@ -1,0 +1,29 @@
+ticket:9
+status:open
+================
+Fix printing tickets
+1. Should be able to list tickets with the contents
+2. [
+    "/home/ssg/.tickets/tickets/7",
+    "/home/ssg/.tickets/tickets/8",
+    "/home/ssg/.tickets/tickets/0",
+    "/home/ssg/.tickets/tickets/1",
+    "/home/ssg/.tickets/tickets/2",
+    "/home/ssg/.tickets/tickets/3",
+    "/home/ssg/.tickets/tickets/4",
+    "/home/ssg/.tickets/tickets/5",
+    "/home/ssg/.tickets/tickets/6",
+] should have options to choose open, closed, completed, and in_progress tickets
+3. Make [
+    "/home/ssg/.tickets/tickets/7",
+    "/home/ssg/.tickets/tickets/8",
+    "/home/ssg/.tickets/tickets/0",
+    "/home/ssg/.tickets/tickets/1",
+    "/home/ssg/.tickets/tickets/2",
+    "/home/ssg/.tickets/tickets/3",
+    "/home/ssg/.tickets/tickets/4",
+    "/home/ssg/.tickets/tickets/5",
+    "/home/ssg/.tickets/tickets/6",
+] to print the contents of the ticket
+
+
