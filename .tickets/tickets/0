@@ -1,0 +1,8 @@
+ticket:0
+responsible:jin
+status:closed
+================
+add a .ticket config file to project root directories.
+It should hold information on where to place the tickets
+and the user who submitted the ticket.
+

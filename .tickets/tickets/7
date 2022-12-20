@@ -1,0 +1,11 @@
+ticket:7
+status:complete
+================
+Add ticket commands
+1. tickets new 'content body'
+2. tickets close [args]; where args is a list of ticket numbers separated by spaces
+3. tickest complete [args] will mark tickets from [args] as complete
+4. tickets open [args] will mark tickets from [args] as open
+5. tickets claim [args] will change the owner of a ticket to the current user. user_name can be stored in global config
+6. tickets edit  will open a ticket with the editor of choice (default vim)
+

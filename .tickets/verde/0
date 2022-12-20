@@ -1,0 +1,9 @@
+ticket:0
+status:in_progress
+================
+Create a rotating IP address pool using mullvad
+1. It should use mullvad to set an ip address and send a certain number of calls
+2. It should keep track of how many times each IP address was used. Maybe a percentage total
+3. It should create a pool of ip address form a file of ip addresses
+4. It should retry on failure
+

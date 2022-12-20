@@ -1,0 +1,6 @@
+ticket:1
+status:open
+================
+Add Ingredients table to database
+Should also be able to use curl to CRUD ingredients
+

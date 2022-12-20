@@ -1,0 +1,10 @@
+ticket:0
+status:in_progress
+owner:jin
+================
+setup database models for User and Spot
+1. User: {id: u32, username: unique varchar(32), email: unique varchar(32) optional}
+2. Spot: {id, points: [topleft, bottomright], shared: bool, title: varchar(32), body: string, user_id: fk}
+   - A user has zero to many spots, and a spot belongs to a user
+   - a spot.points are the topleft and bottom right lat/lon points
+

@@ -1,0 +1,7 @@
+ticket:1
+responsible:jin
+status:closed
+================
+bug fix: insert new line at end of body
+if one doesnt already exist
+

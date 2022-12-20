@@ -1,0 +1,8 @@
+ticket:5
+status:closed
+================
+add some tickets options
+1. List files
+2. Mark completed, closed, open
+3. Do I need a config file in each project for this? or a single config in /home/ssg/.tickets?
+

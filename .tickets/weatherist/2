@@ -1,0 +1,7 @@
+ticket:2
+status:in_progress
+owner:jin
+================
+implement 'spots'
+1. Users should be able to mark spots on a map and see the the weather history and forecast for that area
+

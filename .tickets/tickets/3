@@ -1,0 +1,10 @@
+ticket:3
+responsible:jin
+status:closed
+================
+Should be able to search for tickets
+1. open tickets
+2. completed tickets
+3. closed tickets
+4. Maybe just come up with some shell scripts for this
+
