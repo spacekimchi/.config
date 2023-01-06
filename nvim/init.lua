@@ -61,19 +61,6 @@ if packer_bootstrap then
   return
 end
 
--- Set completeopt to have a better completion experience
--- :help completeopt
--- menuone: popup even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not auto-select, nvim-cmp plugin will handle this for us.
-vim.o.completeopt = "menuone,noinsert,noselect"
-
--- Avoid showing extra messages when using completion
-vim.opt.shortmess = vim.opt.shortmess + "c"
-vim.opt.guicursor = ""
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-
 vim.g.seoul256_background = 324
 vim.api.nvim_command [[colorscheme seoul256]]
 
@@ -81,6 +68,91 @@ vim.api.nvim_command [[colorscheme seoul256]]
 vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
 
 vim.env.FZF_DEFAULT_COMMAND = 'rg --files --glob "!.git/*"'
+
+
+-- Set completeopt to have a better completion experience
+-- :help completeopt
+-- menuone: popup even when there's only one match
+-- noinsert: Do not insert text until a selection is made
+-- noselect: Do not auto-select, nvim-cmp plugin will handle this for us.
+vim.o.completeopt = "menuone,noinsert,noselect"
+
+-- Appearance
+------------------------------------------------------------------------
+-- relative line numbering, yo
+-- number and relativenumber are window options. So doing vim.o.relativenumber = true
+-- will not work
+vim.wo.relativenumber = true
+-- but we don't want pure relative line numbering. The line where the cursor is
+-- should show absolute line number
+vim.wo.number = true
+-- show a bar on column 120. Going beyond 120 chars per line gets hard to read.
+-- I have a linting rule in most of my projects to keep line limit to 120 chars.
+-- I had no idea that colorcolumn is a window option
+-- Tip: One way to find whether an option is global or window or buffer
+-- try vim.o.<option_name> = 'blah' and run ex command :luafile %
+-- It will tell you what the real type of the option_name should be
+vim.wo.colorcolumn = "120"
+
+-- maintain undo history between sessions
+vim.cmd([[
+set undofile
+]])
+
+-- Editing
+-----------------------
+-- doing vim.o.tabstop does not work. tabstop only works as a buffer option when trying to set with meta accessors
+-- ideally, i guess they should be set per buffer depending on the type of file
+-- vim.cmd [[set tabstop=4]]
+-- vim.cmd [[set shiftwidth=4]]
+-- vim.cmd [[set smarttab]]
+-- vim.cmd [[autocmd FileType javascript setlocal ts=4 sts=4 sw=4]]
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.smarttab = true
+-- don't want case sensitive searches
+vim.o.ignorecase = true
+-- but still want search to be smart. If i type a upper case thing, do a case
+-- sensitive blah
+vim.o.smartcase = true
+
+-- Avoid showing extra messages when using completion
+vim.opt.shortmess = vim.opt.shortmess + "c"
+vim.opt.guicursor = ""
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- Keymappings
+-----------------------
+-- Map leader key
+vim.g.mapleader = ','
+
+-- copy selection
+vim.keymap.set('', '<leader>c', '"+y')
+-- open fzf
+vim.keymap.set('n', '<C-p>', '<cmd>Files<CR>')
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>i", {noremap = true})
+vim.keymap.set("n", "<C-s>", ":w<CR>", {noremap = true})
+vim.keymap.set('n', '<C-w>t', '<cmd>tabnew<CR>')
+vim.keymap.set('n', '<C-j>', '<C-w>j', {noremap = true})
+vim.keymap.set('n', '<C-k>', '<C-w>k', {noremap = true})
+vim.keymap.set('n', '<C-h>', '<C-w>h', {noremap = true})
+vim.keymap.set('n', '<C-l>', '<C-w>l', {noremap = true})
+-- vim.keymap.set('n', '<C-w>T', '<cmd>tabclose<CR>')
+-- vim.keymap.set('n', '<S-Down>', '<C-w>2<')
+-- vim.keymap.set('n', '<S-Left>', '<C-w>2-')
+-- vim.keymap.set('n', '<S-Right>', '<C-w>2+')
+-- vim.keymap.set('n', '<S-Up>', '<C-w>2>')
+-- vim.keymap.set('n', '<leader>cc', '"+yy')
+-- vim.keymap.set('n', '<leader>e', trim_whitespaces)
+-- vim.keymap.set('n', '<leader>t', '<cmd>terminal<CR>')
+-- vim.keymap.set('n', '<leader>u', '<cmd>update<CR>')
+-- vim.keymap.set('n', '<leader>x', '<cmd>conf qa<CR>')
+-- vim.keymap.set('n', 'H', 'zh')
+-- vim.keymap.set('n', 'L', 'zl')
+-- vim.keymap.set('n', 'yow', toggle_wrap)
+-- vim.keymap.set('t', '<ESC>', escape_term, {expr = true})
+-- vim.keymap.set('t', 'jj', escape_term, {expr = true})
 
 local function on_attach(client, buffer)
   -- This callback is called when the LSP is atttached/enabled for this buffer
@@ -159,22 +231,3 @@ cmp.setup({
   },
 })
 
--- vim.keymap.set('', '<leader>c', '"+y')
--- vim.keymap.set('', '<leader>s', substitute, {expr = true})
--- vim.keymap.set('n', '<C-w>T', '<cmd>tabclose<CR>')
--- vim.keymap.set('n', '<C-w>t', '<cmd>tabnew<CR>')
--- vim.keymap.set('n', '<S-Down>', '<C-w>2<')
--- vim.keymap.set('n', '<S-Left>', '<C-w>2-')
--- vim.keymap.set('n', '<S-Right>', '<C-w>2+')
--- vim.keymap.set('n', '<S-Up>', '<C-w>2>')
-vim.keymap.set('n', '<C-p>', '<cmd>Files<CR>')
--- vim.keymap.set('n', '<leader>cc', '"+yy')
--- vim.keymap.set('n', '<leader>e', trim_whitespaces)
--- vim.keymap.set('n', '<leader>t', '<cmd>terminal<CR>')
--- vim.keymap.set('n', '<leader>u', '<cmd>update<CR>')
--- vim.keymap.set('n', '<leader>x', '<cmd>conf qa<CR>')
--- vim.keymap.set('n', 'H', 'zh')
--- vim.keymap.set('n', 'L', 'zl')
--- vim.keymap.set('n', 'yow', toggle_wrap)
--- vim.keymap.set('t', '<ESC>', escape_term, {expr = true})
--- vim.keymap.set('t', 'jj', escape_term, {expr = true})
