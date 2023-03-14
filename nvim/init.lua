@@ -133,13 +133,22 @@ vim.g.mapleader = ','
 vim.keymap.set('', '<leader>c', '"+y')
 -- open fzf
 vim.keymap.set('n', '<C-p>', '<cmd>Files<CR>')
+-- Write file with Ctrl + s
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>i", {noremap = true})
 vim.keymap.set("n", "<C-s>", ":w<CR>", {noremap = true})
+-- Open a new tab
 vim.keymap.set('n', '<C-w>t', '<cmd>tabnew<CR>')
 vim.keymap.set('n', '<C-j>', '<C-w>j', {noremap = true})
 vim.keymap.set('n', '<C-k>', '<C-w>k', {noremap = true})
 vim.keymap.set('n', '<C-h>', '<C-w>h', {noremap = true})
 vim.keymap.set('n', '<C-l>', '<C-w>l', {noremap = true})
+-- wrap selection in {}, [], (), <>, "", or ''
+vim.keymap.set('v', '{', "x<Esc>i{}<Esc>hp", {noremap = true})
+vim.keymap.set('v', '[', "x<Esc>i[]<Esc>hp", {noremap = true})
+vim.keymap.set('v', '(', "x<Esc>i()<Esc>hp", {noremap = true})
+vim.keymap.set('v', '<leader><', "x<Esc>i<><Esc>hp", {noremap = true})
+vim.keymap.set('v', '"', 'x<Esc>i""<Esc>hp', {noremap = true})
+vim.keymap.set('v', "'", "x<Esc>i''<Esc>hp", {noremap = true})
 -- vim.keymap.set('n', '<C-w>T', '<cmd>tabclose<CR>')
 -- vim.keymap.set('n', '<S-Down>', '<C-w>2<')
 -- vim.keymap.set('n', '<S-Left>', '<C-w>2-')
