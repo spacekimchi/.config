@@ -129,6 +129,8 @@ vim.opt.splitright = true
 -- Map leader key
 vim.g.mapleader = ','
 
+-- open new tab with current file
+vim.keymap.set('n', '<leader>wt', ':$tab split<CR>')
 -- copy selection
 vim.keymap.set('', '<leader>c', '"+y')
 -- open fzf
